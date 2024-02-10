@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Visualization</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    <script>
+      const x = [-3, -2, -1, 0, 1, 2, 3];
+      const y = [];
+      const z = [];
+
+      for (let i = 0; i < x.length; i++) {
+        y[i] = 0.5 * x[i] + 2;
+        z[i] = -1 * x[i] + 5;
+      }
+
+      const ctx = document.getElementById("myChart").getContext("2d");
+      const myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: x.map(String),
+          datasets: [
+            {
+              label: "y = 0.5x + 2",
+              data: y,
+              borderColor: "red",
+              fill: false,
+            },
+            {
+              label: "z = -x + 5",
+              data: z,
+              borderColor: "blue",
+              fill: false,
+            },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>
